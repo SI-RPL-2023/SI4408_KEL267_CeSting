@@ -16,5 +16,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::group(['namespace' => 'App\Http\Controllers'], function()
     {
         Route::get('logout', [UserController::class, 'logout'])->name('logout');
+        Route::resource('profil', ProfilController::class);
+        Route::resource('profil_anak', ProfilanakController::class);
     });
 });
