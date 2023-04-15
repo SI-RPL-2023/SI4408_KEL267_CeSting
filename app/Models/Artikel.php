@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Artikel extends Model
 {
     use HasFactory;
+    protected $table = 'artikel';
+    protected $primaryKey = 'artikel_id';
+    protected $fillable = [
+        'judul',
+        'isi',
+        'tanggal',
+    ];
 }
