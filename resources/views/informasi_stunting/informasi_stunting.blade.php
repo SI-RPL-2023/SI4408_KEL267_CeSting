@@ -54,7 +54,11 @@
                         </div>
                     </div>
                 <?php } ?>
-                
+                <div class="p-3 py-5">
+                    <div class="d-flex flex-row-reverse justify-content-between align-items-center">
+                        {{$artikel -> tanggal}}
+                    </div>
+                </div>
             </div>
         </div>
     @endforeach
