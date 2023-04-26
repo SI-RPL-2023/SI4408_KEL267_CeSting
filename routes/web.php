@@ -18,5 +18,7 @@ Route::group(['middleware' => 'auth'], function()
         Route::get('logout', [UserController::class, 'logout'])->name('logout');
         Route::resource('profil', ProfilController::class);
         Route::resource('profil_anak', ProfilanakController::class);
+        Route::resource('artikel', ArtikelController::class);
+        Route::resource('event', EventController::class);
     });
 });
