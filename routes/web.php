@@ -19,5 +19,6 @@ Route::group(['middleware' => 'auth'], function()
         Route::resource('profil', ProfilController::class);
         Route::resource('profil_anak', ProfilanakController::class);
         Route::resource('artikel', ArtikelController::class);
+        Route::resource('event', EventController::class);
     });
 });
