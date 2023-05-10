@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function()
         Route::resource('lokasi_pengecekan', LokasiPengecekanController::class);
         Route::resource('catat_tumbuh', CatattumbuhController::class);
         Route::resource('artikel', ArtikelController::class);
+        Route::resource('event', EventController::class);
         Route::resource('profil', ProfilController::class);
         Route::resource('profil_anak', ProfilanakController::class);
     });
