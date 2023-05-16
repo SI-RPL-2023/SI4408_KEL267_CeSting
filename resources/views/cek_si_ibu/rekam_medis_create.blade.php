@@ -1,5 +1,6 @@
 @extends('navbar')
 @section('isihalaman')
+
 <div class="container mt-5 mb-5">
     <div class="card row mb-3">
         <div class="col">
@@ -9,11 +10,13 @@
             </div>
         </div>
     </div>
+    
     @if($errors->any())
         @foreach($errors->all() as $err)
             <div class="alert alert-danger my-5" role="alert">{{ $err }}</div>
         @endforeach
     @endif
+
     <div class="card row mb-3">
         <div class="p-3 py-5">
             <form action="/rekam_medis" method="POST" enctype="multipart/form-data">
@@ -100,4 +103,5 @@
         </div>
     </div>
 </div>
+
 @endsection
