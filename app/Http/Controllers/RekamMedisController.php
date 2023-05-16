@@ -9,15 +9,18 @@ use DB;
 class RekamMedisController extends Controller
 {
     public function index()
+
     {
         $listrekammedis = RekamMedis::orderBy('username') -> get();
         return view('cek_si_ibu.rekam_medis', compact('listrekammedis'));
     }
     public function create()
+
     {
         return view('cek_si_ibu.rekam_medis_create');
     }
     public function store(Request $request)
+
     {
         if (DB::table('user')->where('username', $request -> username)->exists()) {
             RekamMedis::create([
@@ -37,11 +40,13 @@ class RekamMedisController extends Controller
         }
     }
     public function edit($rekam_id)
+
     {
         $rekammedis = RekamMedis::find($rekam_id);
         return view('cek_si_ibu.rekam_medis_edit', compact('rekammedis'));
     }
     public function update(Request $request, $rekam_id)
+    
     {
         RekamMedis::find($rekam_id)->update([
             'berat_janin' => $request -> berat_janin,
