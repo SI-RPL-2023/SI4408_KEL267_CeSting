@@ -6,7 +6,9 @@ use App\Models\RekamMedis;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
+
 class RekamMedisController extends Controller
+
 {
     public function index()
     {
