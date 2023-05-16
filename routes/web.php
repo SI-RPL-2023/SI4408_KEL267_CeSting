@@ -10,7 +10,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('login', [UserController::class, 'login'])->name('login');
     Route::post('login', [UserController::class, 'login_action'])->name('login.action');
     Route::resource('', HomeController::class);
-});
+}); 
+
 Route::group(['middleware' => 'auth'], function()
 {
     Route::group(['namespace' => 'App\Http\Controllers'], function()
