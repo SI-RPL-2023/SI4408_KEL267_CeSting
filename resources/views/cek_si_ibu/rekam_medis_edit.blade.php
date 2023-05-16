@@ -1,5 +1,6 @@
 @extends('navbar')
 @section('isihalaman')
+
 <div class="container mt-5 mb-5">
     <div class="card row mb-3">
         <div class="col">
@@ -78,4 +79,5 @@
         </div>
     </div>
 </div>
+
 @endsection
