@@ -76,5 +76,73 @@
             </div>
         @endforeach
     <?php } ?>
+    <?php if (Auth::user()->type == 'user') { ?>
+        @if($listcatattumbuh->count()!=0)
+            @if(DB::table('catat_tumbuh')->where('username', Auth::user()->username)->exists())
+                @foreach($listcatattumbuh as $catattumbuh)
+                    @if($catattumbuh->username==Auth::user()->username)
+                    <div class="card row mb-3">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h2><b>{{$catattumbuh -> username}}</b></h2>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3 g-4">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Berat Badan Anak(kg)</h5>
+                                                <h1>{{$catattumbuh -> berat_badan_anak}}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Tinggi Badan Anak(cm)</h5>
+                                                <h1>{{$catattumbuh -> tinggi_badan_anak}}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Lingar Kepala Anak(cm)</h5>
+                                                <h1>{{$catattumbuh -> lingkar_kepala_anak}}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row-reverse justify-content-between align-items-center">
+                                    {{$catattumbuh -> tanggal_catat_tumbuh}}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <a href="/line-chart-anak" class="btn btn-primary">
+                            Statistik
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            @else
+                <div class="col">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <h1><span class="font-weight-bold"><br>Anda belum memiliki riwayat catatan pertumbuhan anak</span></h1>
+                    </div>
+                </div>
+            @endif
+        @else
+        <div class="col">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <h1><span class="font-weight-bold"><br>Anda belum memiliki riwayat catatan pertumbuhan anak</span></h1>
+            </div>
+        </div>
+        @endif
+    <?php } ?>
 </div>
 @endsection
