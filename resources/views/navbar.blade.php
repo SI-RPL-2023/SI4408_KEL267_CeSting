@@ -32,7 +32,12 @@
                 </div>
               </li>
               <li class="nav-item"><a href="/catat_tumbuh" class="nav-link" style="text-align: center"><img src="{{asset('assets/images/Icon-1000_Hari_Anak.png')}}" style="width: 30px; height: 30px; margin-right: 5px"></img><br><br>1000 Hari Anak</a></li>
-              <li class="nav-item"><a href="/artikel" class="nav-link" style="text-align: center"><img src="{{asset('assets/images/Icon-Informasi_Stunting.png')}}" style="width: 30px; height: 30px; margin-right: 5px"></img><br><br>Informasi Stunting</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align: center"><img src="{{asset('assets/images/Icon-Informasi_Stunting.png')}}" style="width: 30px; height: 30px; margin-right: 5px"><br><br>Informasi Stunting</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="/artikel">Artikel</a>
+                  <a class="dropdown-item" href="/event">Event</a>
+              </li>
               <?php if (Auth::user()->type == 'user') { ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align: center"><img src="{{asset('assets/images/Icon-Profil.png')}}" style="width: 30px; height: 30px; margin-right: 5px"><br><br>Profil</a>
