@@ -55,4 +55,18 @@ class CatatTumbuhController extends Controller
         CatatTumbuh::find($catat_id)->delete();
         return redirect('/catat_tumbuh');
     }
+    public function LineChart(Request $request)
+    {
+        $target = Auth::user()->username;
+        $result = DB::select(DB::raw("SELECT * FROM `catat_tumbuh` WHERE username = '$target'"));
+        $data1 = "";
+        $data2 = "";
+        $data3 = "";
+        foreach ($result as $val){
+            $data1 = "[new Date('$val->tanggal_catat_tumbuh'), $val->berat_badan_anak], $data1";
+            $data2 = "[new Date('$val->tanggal_catat_tumbuh'), $val->tinggi_badan_anak], $data2";
+            $data3 = "[new Date('$val->tanggal_catat_tumbuh'), $val->lingkar_kepala_anak], $data3";
+        }
+        return view('1000_hari_anak.catat_tumbuh_line_chart', compact('data1','data2','data3'));
+    }
 }
