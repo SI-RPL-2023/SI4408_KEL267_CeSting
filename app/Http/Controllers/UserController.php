@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\RateLimiter;
 
 class UserController extends Controller
 {
@@ -38,16 +39,23 @@ class UserController extends Controller
     }
     public function login_action(Request $request)
     {
+        if (RateLimiter::tooManyAttempts(request()->ip(), 2)) {
+            return back()->withErrors([
+                'message' => 'Too many failed login attempt, wait for 1 minute.',
+            ]);
+        }
         $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
         if (Auth::attempt(['username' => $request -> username, 'password' => $request -> password])) {
+                RateLimiter::clear(request()->ip());
                 $request->session()->regenerate();
                 return redirect()->intended('/');
             }
+        RateLimiter::hit(request()->ip(), 60);
         return back()->withErrors([
-            'password' => 'Wrong username or password!',
+            'message' => 'Wrong username or password!',
         ]);
     }
     public function logout(Request $request)
