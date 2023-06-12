@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('nama_depan')->nullable();
             $table->string('nama_belakang')->nullable();
             $table->date('tanggal_lahir')->nullable();
-            $table->integer('no_hp')->nullable();
+            $table->bigInteger('no_hp')->nullable();
             $table->string('provinsi')->nullable();
             $table->string('kabupaten_kota')->nullable();
             $table->string('alamat')->nullable();
